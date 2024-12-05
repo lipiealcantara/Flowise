@@ -1,12 +1,20 @@
 import express from 'express'
+import multer from 'multer'
+import { getUploadPath } from '../../utils'
 import documentStoreController from '../../controllers/documentstore'
+
 const router = express.Router()
+const upload = multer({ dest: getUploadPath() })
+
+router.post(['/upsert/', '/upsert/:id'], upload.array('files'), documentStoreController.upsertDocStoreMiddleware)
+
+router.post(['/refresh/', '/refresh/:id'], documentStoreController.refreshDocStoreMiddleware)
 
 /** Document Store Routes */
 // Create document store
 router.post('/store', documentStoreController.createDocumentStore)
 // List all stores
-router.get('/stores', documentStoreController.getAllDocumentStores)
+router.get('/store', documentStoreController.getAllDocumentStores)
 // Get specific store
 router.get('/store/:id', documentStoreController.getDocumentStoreById)
 // Update documentStore
@@ -22,8 +30,10 @@ router.get('/components/loaders', documentStoreController.getDocumentLoaders)
 router.delete('/loader/:id/:loaderId', documentStoreController.deleteLoaderFromDocumentStore)
 // chunking preview
 router.post('/loader/preview', documentStoreController.previewFileChunks)
+// saving process
+router.post('/loader/save', documentStoreController.saveProcessingLoader)
 // chunking process
-router.post('/loader/process', documentStoreController.processFileChunks)
+router.post('/loader/process/:loaderId', documentStoreController.processLoader)
 
 /** Document Store - Loaders - Chunks */
 // delete specific file chunk from the store
