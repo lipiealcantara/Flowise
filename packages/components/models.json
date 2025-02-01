@@ -498,6 +498,18 @@
             "name": "groqChat",
             "models": [
                 {
+                    "label": "deepseek-r1-distill-llama-70b",
+                    "name": "deepseek-r1-distill-llama-70b"
+                },
+                {
+                    "label": "llama-3.3-70b-versatile",
+                    "name": "llama-3.3-70b-versatile"
+                },
+                {
+                    "label": "llama-3.3-70b-specdec",
+                    "name": "llama-3.3-70b-specdec"
+                },
+                {
                     "label": "llama-3.2-1b-preview",
                     "name": "llama-3.2-1b-preview"
                 },
@@ -565,6 +577,19 @@
             ]
         },
         {
+            "name": "deepseek",
+            "models": [
+                {
+                    "label": "deepseek-chat",
+                    "name": "deepseek-chat"
+                },
+                {
+                    "label": "deepseek-reasoner",
+                    "name": "deepseek-reasoner"
+                }
+            ]
+        },
+        {
             "name": "chatOpenAI",
             "models": [
                 {
@@ -590,6 +615,10 @@
                 {
                     "label": "gpt-4o-2024-05-13",
                     "name": "gpt-4o-2024-05-13"
+                },
+                {
+                    "label": "o3-mini",
+                    "name": "o3-mini"
                 },
                 {
                     "label": "o1-preview (latest)",
